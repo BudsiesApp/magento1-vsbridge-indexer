@@ -5,7 +5,7 @@ if (!defined('JSON_PRESERVE_ZERO_FRACTION')) {
     define('JSON_PRESERVE_ZERO_FRACTION', 1024);
 }
 
-require_once 'abstract.php';
+require_once __DIR__ . '/../../../../../shell/abstract.php';
 
 use Divante_VueStorefrontIndexer_Model_Tools as Tools;
 
