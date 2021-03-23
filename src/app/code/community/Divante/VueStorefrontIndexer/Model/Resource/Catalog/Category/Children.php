@@ -48,6 +48,7 @@ class Divante_VueStorefrontIndexer_Model_Resource_Catalog_Category_Children
 
         /** @var Mage_Catalog_Model_Resource_Category_Collection $collection */
         $collection = Mage::getResourceModel('catalog/category_collection');
+        $collection->setStoreId($storeId);
         $collection->addIsActiveFilter();
 
         $select = $collection->getSelect();
