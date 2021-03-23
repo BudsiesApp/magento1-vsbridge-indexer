@@ -1,5 +1,5 @@
 {
-    "name": "budsies/magento1-vsbridge-indexer",
+    "name": "divante/magento1-bridge-indexer",
     "description": "Vue Storefront bridge - Extension for Magento 1.x",
     "type": "magento-module",
     "version": "2.0.0",
