@@ -1,15 +1,15 @@
 {
-    "name": "divante/magento1-bridge-indexer",
-    "license": "",
+    "name": "budsies/magento1-vsbridge-indexer",
+    "description": "Vue Storefront bridge - Extension for Magento 1.x",
     "type": "magento-module",
-    "description": "",
+    "version": "1.0.0",
     "require": {
-        "magento-hackathon/magento-composer-installer": "*"
+        "elasticsearch/elasticsearch": "~5.0"
     },
     "authors":[
         {
-            "name":"Agata Firlejczyk",
-            "email":"afirlejczyk@divante.pl"
+            "name": "d.kochnov",
+            "email": "d.kochnov.optimus@gmail.com"
         }
     ]
 }
