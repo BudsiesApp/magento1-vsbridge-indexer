@@ -2,7 +2,7 @@
     "name": "budsies/magento1-vsbridge-indexer",
     "description": "Vue Storefront bridge - Extension for Magento 1.x",
     "type": "magento-module",
-    "version": "1.0.0",
+    "version": "2.0.0",
     "require": {
         "elasticsearch/elasticsearch": "~5.0"
     },
