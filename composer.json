@@ -2,7 +2,7 @@
     "name": "divante/magento1-bridge-indexer",
     "description": "Vue Storefront bridge - Extension for Magento 1.x",
     "type": "magento-module",
-    "version": "2.0.2",
+    "version": "2.1.0",
     "require": {
         "elasticsearch/elasticsearch": "~5.0"
     },
