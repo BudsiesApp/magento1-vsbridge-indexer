@@ -217,6 +217,7 @@
                                 <inventory_data>Divante_VueStorefrontIndexer_Model_Indexer_Datasource_Product_Inventory</inventory_data>
                                 <configurable_data>Divante_VueStorefrontIndexer_Model_Indexer_Datasource_Product_Configurable</configurable_data>
                                 <bundle_options>Divante_VueStorefrontIndexer_Model_Indexer_Datasource_Product_Bundle</bundle_options>
+                                <custom_options>Divante_VueStorefrontIndexer_Model_Indexer_Datasource_Product_Custom</custom_options>
                                 <links_data>Divante_VueStorefrontIndexer_Model_Indexer_Datasource_Product_Links</links_data>
                                 <category_data>Divante_VueStorefrontIndexer_Model_Indexer_Datasource_Product_Categories</category_data>
                                 <price_data>Divante_VueStorefrontIndexer_Model_Indexer_Datasource_Product_Prices</price_data>
