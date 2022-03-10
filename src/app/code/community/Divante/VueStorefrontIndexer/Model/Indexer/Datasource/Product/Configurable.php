@@ -36,6 +36,7 @@ class Divante_VueStorefrontIndexer_Model_Indexer_Datasource_Product_Configurable
      */
     protected $requireChildrenAttributes = [
         'name',
+        'short_description',
         'small_image',
         'thumbnail',
         'image',
@@ -43,6 +44,7 @@ class Divante_VueStorefrontIndexer_Model_Indexer_Datasource_Product_Configurable
         'status',
         'visibility',
         'tax_class_id',
+        'media_gallery'
     ];
     /**
      * Images
@@ -83,6 +85,8 @@ class Divante_VueStorefrontIndexer_Model_Indexer_Datasource_Product_Configurable
      */
     protected $loadOptionLabelById;
 
+    protected Divante_VueStorefrontIndexer_Model_Indexer_Datasource_Product_Media $productMediaDatasource;
+
     /**
      * Divante_VueStorefrontIndexer_Model_Indexer_Action_Category_Full constructor.
      */
@@ -95,6 +99,7 @@ class Divante_VueStorefrontIndexer_Model_Indexer_Datasource_Product_Configurable
         $this->inventoryResource = Mage::getResourceModel('vsf_indexer/catalog_product_inventory');
         $this->configSettings = Mage::getSingleton('vsf_indexer/config_catalogsettings');
         $this->loadOptionLabelById = Mage::getSingleton('vsf_indexer/attribute_loadoptionlabelbyid');
+        $this->productMediaDatasource = Mage::getModel('vsf_indexer/indexer_datasource_product_media');
     }
 
     /**
@@ -130,6 +135,8 @@ class Divante_VueStorefrontIndexer_Model_Indexer_Datasource_Product_Configurable
             return $indexData;
         }
 
+        $allChildrenWithMediaGallery = $this->productMediaDatasource->addData($allChildren, $storeId);
+
         $notifyStockDefaultValue = $this->getNotifyForQtyBelowDefaultValue($storeId);
         $childIds = array_keys($allChildren);
 
@@ -142,9 +149,13 @@ class Divante_VueStorefrontIndexer_Model_Indexer_Datasource_Product_Configurable
         );
 
         $requiredAttribute = array_unique($requiredAttributes);
-        $allChildren = $this->loadChildrenRawAttributesInBatches($storeId, $allChildren, $requiredAttribute);
+        $allChildrenWithMediaGallery = $this->loadChildrenRawAttributesInBatches(
+            $storeId,
+            $allChildrenWithMediaGallery,
+            $requiredAttribute
+        );
 
-        foreach ($allChildren as $child) {
+        foreach ($allChildrenWithMediaGallery as $child) {
             $childId = $child['entity_id'];
             $child['id'] = intval($child['entity_id']);
 
