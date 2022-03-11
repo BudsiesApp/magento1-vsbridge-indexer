@@ -145,6 +145,9 @@ class Divante_VueStorefrontIndexer_Model_Indexer_Datasource_Product_Metaattribut
             $optionId = $option['value'];
 
             if (in_array($optionId, $productOptionIds)) {
+                // Convert all values to strings for ES 
+                $option['value'] = (string)$option['value'];
+
                 $productOptions[] = $option;
             }
         }
