@@ -13,6 +13,15 @@ use Divante_VueStorefrontIndexer_Api_Mapping_FieldInterface as FieldInterface;
  */
 class Divante_VueStorefrontIndexer_Model_Index_Mapping_Generalmapping
 {
+    protected Divante_VueStorefrontIndexer_Service_ProductStockConfigMapper $stockConfigMapper;
+
+    public function __construct()
+    {
+        $this->stockConfigMapper = new Divante_VueStorefrontIndexer_Service_ProductStockConfigMapper(
+            new Divante_VueStorefrontIndexer_Service_ConfigReader(),
+            Mage::helper('cataloginventory/minsaleqty')
+        );
+    }
 
     /**
      * @var array
@@ -83,6 +92,8 @@ class Divante_VueStorefrontIndexer_Model_Index_Mapping_Generalmapping
      */
     public function prepareStockData(array $stockData)
     {
+        $stockData = $this->stockConfigMapper->processStockData($stockData);
+
         $stockMapping = $this->getStockMapping();
 
         foreach ($stockData as $key => $value) {
