@@ -110,7 +110,7 @@ class Divante_VueStorefrontIndexer_Model_Tools
 
     /**
      * @param      $type
-     * @param null $storeId
+     * @param int|null $storeId
      *
      * @return Divante_VueStorefrontIndexer_Model_Index_Index
      */
