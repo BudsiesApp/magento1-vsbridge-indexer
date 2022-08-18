@@ -53,6 +53,13 @@ class Divante_VueStorefrontIndexer_Model_Indexer_Datasource_Product_Prices imple
             $indexData[$productId]['regular_price'] = $priceDataRow['price'];
         }
 
+        $index = new Varien_Object();
+        $index->setData('items', $indexData);
+
+        Mage::dispatchEvent('elasticsearch_product_prices_index_ready', ['indexObject' => $index]);
+
+        $indexData = $index->getData('items');
+
         return $this->applyTierGroupPrices($indexData, $storeId);
     }
 
