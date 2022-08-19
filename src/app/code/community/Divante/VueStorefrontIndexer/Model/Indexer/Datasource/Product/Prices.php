@@ -56,7 +56,10 @@ class Divante_VueStorefrontIndexer_Model_Indexer_Datasource_Product_Prices imple
         $index = new Varien_Object();
         $index->setData('items', $indexData);
 
-        Mage::dispatchEvent('elasticsearch_product_prices_index_ready', ['indexObject' => $index]);
+        Mage::dispatchEvent(
+            'elasticsearch_product_prices_index_ready', 
+            ['indexObject' => $index, 'storeId' => $storeId]
+        );
 
         $indexData = $index->getData('items');
 
