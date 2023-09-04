@@ -72,7 +72,9 @@ class Divante_VueStorefrontIndexer_Model_Resource_Catalog_Product_Inventory
      */
     public function loadInventoryData($storeId, array $productIds)
     {
-        return $this->getInventoryData($storeId, $productIds, $this->fields);
+        $inventoryData = $this->getInventoryData($storeId, $productIds, $this->fields);
+
+        return $this->prepareInventoryData($inventoryData);
     }
 
     /**
@@ -93,7 +95,9 @@ class Divante_VueStorefrontIndexer_Model_Resource_Catalog_Product_Inventory
             'qty',
         ];
 
-        return $this->getInventoryData($storeId, $productIds, $fields);
+        $inventoryData = $this->getInventoryData($storeId, $productIds, $fields);
+
+        return $this->prepareInventoryData($inventoryData);
     }
 
     /**
@@ -122,5 +126,24 @@ class Divante_VueStorefrontIndexer_Model_Resource_Catalog_Product_Inventory
         );
 
         return $this->connection->fetchAssoc($select);
+    }
+
+    private function prepareInventoryData(array $inventoryData): array
+    {
+        foreach ($inventoryData as $key => $inventoryDataItem) {
+            if (!isset($inventoryDataItem['is_in_stock'])) {
+                continue;
+            }
+            
+            if (!isset($inventoryDataItem['manage_stock'])) {
+                continue;
+            }
+
+            if (!boolval($inventoryDataItem['manage_stock'])) {
+                $inventoryData[$key]['is_in_stock'] = '1';
+            }
+        }
+
+        return $inventoryData;
     }
 }
