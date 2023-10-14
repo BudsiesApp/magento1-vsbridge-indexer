@@ -116,6 +116,12 @@ class Divante_VueStorefrontIndexer_Model_Resource_Catalog_Product_Bundle
         $bundleSelections = $this->getBundleSelections();
         $simpleIds = array_column($bundleSelections, 'product_id');
         $simpleSkuList = $this->getProductSku($simpleIds);
+        
+        array_multisort(
+            array_column($bundleSelections, 'option_id'), SORT_ASC,
+            array_column($bundleSelections, 'position'), SORT_ASC,
+            $bundleSelections
+        );
 
         foreach ($bundleSelections as $selection) {
             $optionId = $selection['option_id'];
