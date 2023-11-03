@@ -199,6 +199,15 @@ class Divante_VueStorefrontIndexer_Model_Indexer_Datasource_Category_Attributes 
                     $categoryDTO['entity_id']
                 );
                 $categoryDTO['url_key'] = $slug;
+            } else {
+                $categoryUrlPrefix = 'c/';
+
+                $urlKey = $categoryDTO['url_key'];
+                if (substr($urlKey, 0, strlen($categoryUrlPrefix)) == $categoryUrlPrefix) {
+                    $urlKey = substr($urlKey, strlen($categoryUrlPrefix));
+                }
+
+                $categoryDTO['url_key'] = $urlKey;
             }
 
             $categoryDTO['slug'] = $categoryDTO['url_key'];
