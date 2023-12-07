@@ -136,6 +136,7 @@ class Divante_VueStorefrontIndexer_Model_Index_Mapping_Product extends AbstractM
                     'product_sku' => ['type' => FieldInterface::TYPE_TEXT],
                     'option_id' => ['type' => FieldInterface::TYPE_LONG],
                     'sort_order' => ['type' => FieldInterface::TYPE_LONG],
+                    'sku' => ['type' => FieldInterface::TYPE_TEXT],
                     'title' => ['type' => FieldInterface::TYPE_TEXT],
                     'type' => ['type' => FieldInterface::TYPE_TEXT],
                     'is_require' => ['type' => FieldInterface::TYPE_BOOLEAN],
@@ -144,6 +145,7 @@ class Divante_VueStorefrontIndexer_Model_Index_Mapping_Product extends AbstractM
                     'image_size_y' => ['type' => FieldInterface::TYPE_LONG],
                     'values' => [
                         'properties' => [
+                            'sku' => ['type' => FieldInterface::TYPE_TEXT],
                             'title' => ['type' => FieldInterface::TYPE_TEXT],
                             'sort_order' => ['type' => FieldInterface::TYPE_LONG],
                             'price' => ['type' => FieldInterface::TYPE_LONG],

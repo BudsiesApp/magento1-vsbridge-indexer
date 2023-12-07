@@ -84,6 +84,7 @@ class Divante_VueStorefrontIndexer_Model_Resource_Catalog_Product_Custom
                     foreach ($optionValues->getItems() as $value) {
                         $productOptionValues[] = [
                             'option_type_id' => $value->getOptionTypeId(),
+                            'sku' => $value->getSku(),
                             'title' => $value->getTitle(),
                             'price' => $value->getPrice(),
                             'price_type' => $value->getPriceType(),
@@ -95,6 +96,7 @@ class Divante_VueStorefrontIndexer_Model_Resource_Catalog_Product_Custom
                 $productOptions[] = [
                     "product_sku" => $product->getSku(),
                     "option_id" => (int)$option->getId(),
+                    'sku' => $option->getSku(),
                     "title" => $option->getTitle(),
                     "type" => $option->getType(),
                     "sort_order" => (int)$option->getSortOrder(),
