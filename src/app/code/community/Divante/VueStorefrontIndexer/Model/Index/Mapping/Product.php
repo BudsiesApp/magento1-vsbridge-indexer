@@ -68,6 +68,8 @@ class Divante_VueStorefrontIndexer_Model_Index_Mapping_Product extends AbstractM
 
             $properties = $this->getCustomProperties();
 
+            $properties['configurable_children'] = ['properties' => $attributesMapping];
+
             $properties = array_merge($properties, $attributesMapping);
             $properties = array_merge($properties, $generalMapping->getCommonProperties());
 
