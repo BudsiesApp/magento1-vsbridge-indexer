@@ -84,17 +84,23 @@ class Divante_VueStorefrontIndexer_Model_Observer_Event_Product_Save
      */
     private function updateParents(Product $product)
     {
-        if (Mage_Catalog_Model_Product_Type::TYPE_SIMPLE === $product->getTypeId()) {
-            $productId = $product->getId();
-            $parentIds = $this->parentResourceModel->execute([$productId]);
+        if (in_array($product->getTypeId(), [
+            Mage_Catalog_Model_Product_Type::TYPE_BUNDLE,
+            Mage_Catalog_Model_Product_Type::TYPE_CONFIGURABLE,
+            Mage_Catalog_Model_Product_Type::TYPE_GROUPED,
+        ])) {
+            return;
+        }
 
-            foreach ($parentIds as $parentId) {
-                $this->logEvent(
-                    $parentId,
-                    Divante_VueStorefrontIndexer_Model_Indexer_Products::TYPE,
-                    'save'
-                );
-            }
+        $productId = $product->getId();
+        $parentIds = $this->parentResourceModel->execute([$productId]);
+
+        foreach ($parentIds as $parentId) {
+            $this->logEvent(
+                $parentId,
+                Divante_VueStorefrontIndexer_Model_Indexer_Products::TYPE,
+                'save'
+            );
         }
     }
 
