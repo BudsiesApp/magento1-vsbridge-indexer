@@ -178,6 +178,8 @@ class Divante_VueStorefrontIndexer_Model_Index_Settings
     {
         return array_merge(
             ["index.mapping.total_fields.limit" => $this->getFieldsLimit()],
+            ["number_of_shards" => 1],
+            ["number_of_replicas" => 0],
             [
                 "analysis" => [
                     "analyzer"  => [
